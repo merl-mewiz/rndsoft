@@ -8,8 +8,65 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="<%= root_path %>">SimpleBlog</a>
+            <ul class="navbar-nav">
+                <% if user_signed_in? %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+                            <%= current_user.email %>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Профиль</a>
+                            <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, :class=>"dropdown-item"  %>
+                        </div>
+                    </li>
+                <% else %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+                            Вход/Регистрация
+                        </a>
+                        <div class="dropdown-menu">
+                            <%= link_to 'Войти', new_user_session_path, :class=>"dropdown-item" %>
+                            <%= link_to 'Зарегистрироваться', new_user_registration_path, :class=>"dropdown-item" %>
+                        </div>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+
+    <% if notice %>
+        <div class="container">
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= notice %>
+            </div>
+        </div>
+    <% end %>
+
+    <% if alert %>
+        <div class="container">
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= alert %>
+            </div>
+        </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
+
+<!--
+    <% if notice || alert %>
+        <div class="container">
+            <div class="flex-row">
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+            </div>
+        </div>
+    <% end %>
+-->
