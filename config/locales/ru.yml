@@ -42,3 +42,5 @@ ru:
               too_short: "слишком короткий"
             password_confirmation:
               confirmation: не совпадает с введенным паролем
+            current_password:
+              blank: "не указан"

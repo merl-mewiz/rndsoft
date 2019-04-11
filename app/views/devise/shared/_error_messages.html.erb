@@ -1,17 +1,3 @@
-<!--
-<% if resource.errors.any? %>
-    <div class="container d-err-container">
-        <div class="flex-row">
-            <ul>
-                <% resource.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
-    </div>
-<% end %>
--->
-
 <% if resource.errors.any? %>
     <div class="container">
         <div class="alert alert-danger alert-dismissible">

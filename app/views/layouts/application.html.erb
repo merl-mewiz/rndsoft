@@ -19,7 +19,7 @@
                             <%= current_user.email %>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Профиль</a>
+                            <%= link_to 'Профиль', user_root_path, :class=>"dropdown-item"  %>
                             <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, :class=>"dropdown-item"  %>
                         </div>
                     </li>
@@ -59,14 +59,3 @@
     <%= yield %>
   </body>
 </html>
-
-<!--
-    <% if notice || alert %>
-        <div class="container">
-            <div class="flex-row">
-                <p class="notice"><%= notice %></p>
-                <p class="alert"><%= alert %></p>
-            </div>
-        </div>
-    <% end %>
--->
