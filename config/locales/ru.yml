@@ -30,6 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ru:
+  will_paginate:
+    previous_label: "&#8249; Назад"
+    next_label: "Вперед &#8250;"
+    page_gap: "&hellip;"
+
   activerecord:
     errors:
       models:

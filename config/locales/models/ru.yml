@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    models:
+      post: "Пост"
+    attributes:
+      post:
+        title: "Заголовок"

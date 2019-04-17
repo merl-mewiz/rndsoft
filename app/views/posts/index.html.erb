@@ -1,0 +1,31 @@
+<div class="container main-container">
+    <% if current_user && current_user.isadmin %>
+        <div class="flex-row">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <a href="<%= new_post_path %>" class="btn btn-sm btn-info">Добавить пост</a>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    <div class="flex-row">
+        <% @posts.each do |one_post| %>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="<%= post_path(one_post) %>"><%= one_post.title %></a></h4>
+                    <p class="card-text"><%= one_post.description %></p>
+                    <p class="mb-0 small text-secondary">Опубликовано: <%= one_post.created_at.strftime("%d.%m.%Y %H:%M") %></p>
+                </div>
+                <% if current_user && current_user.isadmin %>
+                    <div class="card-footer">
+                        <a href="<%= edit_post_path(one_post) %>" class="btn btn-sm btn-info">Редактировать пост</a>
+                        <%= link_to 'Удалить пост', one_post, :method => :delete, :class => 'btn btn-sm btn-danger ml-2', data: { confirm: "Вы действительно хотите удалить пост «#{one_post.title}»?" } %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+
+        <%= will_paginate(@posts, :renderer => 'ApplicationHelper::LinkRenderer') %>
+
+    </div>
+</div>

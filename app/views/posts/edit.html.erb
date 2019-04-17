@@ -1,0 +1,15 @@
+<div class="container main-container">
+    <div class="flex-row">
+        <h2 class="mb-4">Редактирование «<%= @post.title %>»</h2>
+        <div class="card">
+            <div class="card-body">
+                <%= render 'edit_post_form' %>
+            </div>
+            <div class="card-footer">
+                <a href="<%= post_path(@post) %>" class="btn btn-sm btn-light">Просмотреть пост</a>
+                <a href="<%= posts_path %>" class="btn btn-sm btn-light">К списку постов</a>
+                <%= link_to 'Удалить пост', @post, :method => :delete, :class => 'btn btn-sm btn-danger float-right', data: { confirm: "Вы действительно хотите удалить пост «#{@post.title}»?" } %>
+            </div>
+        </div>
+    </div>
+</div>
