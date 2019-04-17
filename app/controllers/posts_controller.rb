@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+    before_action only: [:new, :edit, :create, :update, :destroy] do
+        check_auth()
+    end
+
     def index
         @posts = Post.all.paginate(:page => params[:page], :per_page => 10)
     end
@@ -70,6 +74,12 @@ class PostsController < ApplicationController
             else
                 @blog_form_url = posts_path
                 @blog_form_method = "post"
+            end
+        end
+
+        def check_auth
+            unless current_user && current_user.isadmin
+                redirect_to root_path
             end
         end
 end
