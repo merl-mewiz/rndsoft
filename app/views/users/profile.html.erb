@@ -16,7 +16,7 @@
                     <%= form_for :user, url: user_update_mailing_path, method: "patch" do |f| %>
                         <div class="form-group">
                             <%= f.label :mail_digest, "Подписка на рассылку" %><br />
-                            <%= f.select :mail_digest, options_for_select([['Ежедневный дайджест', 1],['Еженедельный дайджест', 2],['Не получать рассылку', 0]], current_user.mail_digest), {}, :class=>'form-control' %>
+                            <%= f.select :mail_digest, options_for_select([['Ежедневный дайджест', 1],['Еженедельный дайджест', 2],['Не получать рассылку', 0]], current_user.mail_digest), {}, :class=>'form-control custom-select' %>
                         </div>
                         <%= f.submit "Сохранить", :class => "btn btn-success" %>
                     <% end %>

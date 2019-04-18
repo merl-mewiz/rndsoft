@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
             return errorMsg
         end
     end
+
+    def check_auth
+        unless current_user && current_user.isadmin
+            redirect_to root_path
+        end
+    end
 end

@@ -1,13 +1,4 @@
 <div class="container main-container">
-    <% if current_user && current_user.isadmin %>
-        <div class="flex-row">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <a href="<%= new_post_path %>" class="btn btn-sm btn-info">Добавить пост</a>
-                </div>
-            </div>
-        </div>
-    <% end %>
     <div class="flex-row">
         <% @posts.each do |one_post| %>
             <div class="card mb-3">

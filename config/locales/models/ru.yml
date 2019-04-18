@@ -2,6 +2,9 @@ ru:
   activerecord:
     models:
       post: "Пост"
+      news: "Новости"
     attributes:
       post:
+        title: "Название"
+      news:
         title: "Заголовок"

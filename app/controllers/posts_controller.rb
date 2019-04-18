@@ -14,7 +14,6 @@ class PostsController < ApplicationController
     def new
         @post = Post.new
         editForm_params
-        @is_new_form = true
     end
 
     def edit
@@ -31,7 +30,6 @@ class PostsController < ApplicationController
         else
             editForm_params
             flash.now[:alert] = blogShowErrors(@post)
-            @is_new_form = true
             render :new
         end
     end
@@ -74,12 +72,6 @@ class PostsController < ApplicationController
             else
                 @blog_form_url = posts_path
                 @blog_form_method = "post"
-            end
-        end
-
-        def check_auth
-            unless current_user && current_user.isadmin
-                redirect_to root_path
             end
         end
 end

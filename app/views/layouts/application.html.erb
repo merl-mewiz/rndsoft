@@ -13,6 +13,19 @@
         <div class="container">
             <a class="navbar-brand" href="<%= root_path %>">SimpleBlog</a>
             <ul class="navbar-nav">
+                <% if current_user && current_user.isadmin %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+                            Управление
+                        </a>
+                        <div class="dropdown-menu">
+                            <%= link_to 'Добавить пост', new_post_path, :class=>"dropdown-item"  %>
+                            <%= link_to 'Добавить новость', new_news_path, :class=>"dropdown-item"  %>
+                            <%= link_to 'Список новостей', news_index_path, :class=>"dropdown-item"  %>
+                        </div>
+                    </li>
+                <% end %>
+
                 <% if user_signed_in? %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
