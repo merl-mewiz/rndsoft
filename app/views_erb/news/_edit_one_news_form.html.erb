@@ -6,7 +6,7 @@
 
     <div class="form-group">
         <%= f.label :mail_digest, "Переодичность" %><br />
-        <%= f.select :mail_digest, options_for_select([['Ежедневный дайджест', 1],['Еженедельный дайджест', 2]], 2), {}, :class=>'form-control custom-select' %>
+        <%= f.select :mail_digest, options_for_select([['Ежедневный дайджест', 1],['Еженедельный дайджест', 2]], @digest_default), {}, :class=>'form-control custom-select' %>
     </div>
 
     <div class="form-group">

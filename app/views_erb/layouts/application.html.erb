@@ -11,7 +11,7 @@
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="<%= root_path %>">SimpleBlog</a>
+            <%= link_to 'SimpleBlog', root_path, :class=>"navbar-brand"  %>
             <ul class="navbar-nav">
                 <% if current_user && current_user.isadmin %>
                     <li class="nav-item dropdown">

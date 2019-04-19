@@ -1,0 +1,27 @@
+= render "devise/shared/error_messages", resource: resource
+.container.main-container
+  .flex-row
+    h2
+      | Регистрация
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .form-group
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control"
+      .form-group
+        = f.label :password
+        - if @minimum_password_length
+          em
+            | (
+            = @minimum_password_length
+            |  символов минимум)
+        br
+        = f.password_field :password, autocomplete: "new-password", :class => "form-control"
+      .form-group
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control"
+      .actions
+        = f.submit "Зарегестрироваться", :class => "btn btn-primary col-sm-12"
+    .d-form-links
+      = render "devise/shared/links"

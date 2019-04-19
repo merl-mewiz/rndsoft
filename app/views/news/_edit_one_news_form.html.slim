@@ -1,0 +1,15 @@
+= form_for :one_news, url: @blog_form_url, method: @blog_form_method do |f|
+  .form-group
+    = f.label :title, 'Название'
+    br
+    = f.text_field :title, autofocus: true, class: "form-control"
+  .form-group
+    = f.label :mail_digest, "Переодичность"
+    br
+    = f.select :mail_digest, options_for_select([['Ежедневный дайджест', 1],['Еженедельный дайджест', 2]], @digest_default), {}, :class=>'form-control custom-select'
+  .form-group
+    = f.label :body, 'Текст'
+    br
+    = f.text_area :body, class: "form-control", rows: "6"
+  div
+    = f.submit "Сохранить", :class => "btn btn-sm btn-success"

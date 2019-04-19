@@ -4,7 +4,7 @@ class NewsController < ApplicationController
     end
 
     def index
-        @news = News.all.paginate(:page => params[:page], :per_page => 30)
+        @news = News.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
     end
 
     def show
@@ -13,11 +13,13 @@ class NewsController < ApplicationController
 
     def new
         @one_news = News.new
+        @digest_default = 2
         editForm_params
     end
 
     def edit
         @one_news = News.find(params[:id])
+        @digest_default = @one_news.mail_digest
         editForm_params(@one_news.id)
     end
 

@@ -1,0 +1,23 @@
+.container.main-container
+  - if current_user && current_user.isadmin
+    .flex
+      .card.mb-3
+        .card-body
+          |  <a href="
+          = edit_post_path(@post)
+          | " class="btn btn-sm btn-info">Редактировать пост
+          = link_to 'Удалить пост', @post, :method => :delete, :class => 'btn btn-sm btn-danger ml-2', data: { confirm: "Вы действительно хотите удалить пост «#{@post.title}»?" }
+  .flex-row
+    .card
+      .card-body
+        h1.mb-1
+          = @post.title
+        p.mb-4.small.text-secondary
+          | Опубликовано: 
+          = @post.created_at.strftime("%d.%m.%Y %H:%M")
+        p
+          = @post.body
+      .card-footer
+        |  <a href="
+        = posts_path
+        | " class="btn btn-sm btn-light">К списку постов

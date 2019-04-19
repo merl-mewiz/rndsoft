@@ -61,3 +61,5 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'will_paginate'
 gem 'paperclip'
+gem 'whenever', require: false
+gem 'slim-rails'

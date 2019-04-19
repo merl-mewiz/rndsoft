@@ -1,0 +1,11 @@
+.container.main-container
+  .flex-row
+    h2.mb-4
+      | Новый пост
+    .card
+      .card-body
+        = render 'edit_post_form'
+      .card-footer
+        |  <a href="
+        = posts_path
+        | " class="btn btn-sm btn-light">К списку постов
