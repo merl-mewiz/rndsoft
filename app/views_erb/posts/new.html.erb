@@ -6,7 +6,7 @@
                 <%= render 'edit_post_form' %>
             </div>
             <div class="card-footer">
-                <a href="<%= posts_path %>" class="btn btn-sm btn-light">К списку постов</a>
+                <%= link_to 'К списку постов', posts_path,  :class => 'btn btn-sm btn-light' %>
             </div>
         </div>
     </div>

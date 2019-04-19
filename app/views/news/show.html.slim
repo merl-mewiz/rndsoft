@@ -3,9 +3,7 @@
     .flex
       .card.mb-3
         .card-body
-          |  <a href="
-          = edit_news_path(@one_news)
-          | " class="btn btn-sm btn-info">Редактировать новость
+          = link_to 'Редактировать новость', edit_news_path(@one_news),  :class => 'btn btn-sm btn-info'
           = link_to 'Удалить новость', @one_news, :method => :delete, :class => 'btn btn-sm btn-danger ml-2', data: { confirm: "Вы действительно хотите удалить новость «#{@one_news.title}»?" }
   .flex-row
     .card
@@ -18,6 +16,4 @@
         p
           = @one_news.body
       .card-footer
-        |  <a href="
-        = news_index_path
-        | " class="btn btn-sm btn-light">К списку новостей
+        = link_to 'К списку новостей', news_index_path,  :class => 'btn btn-sm btn-light'

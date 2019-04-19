@@ -6,22 +6,17 @@
       .card.mb-3
         .card-body
           h4.card-title
-            | <a href="
-            = news_path(one_news)
-            | ">
-            = one_news.title
+            = link_to one_news.title, news_path(one_news)
           p.card-text
             = one_news.body
           p.mb-0.small.text-secondary
-            | Опубликовано: 
+            | Опубликовано:
             = one_news.created_at.strftime("%d.%m.%Y %H:%M")
         - if current_user && current_user.isadmin
           .card-footer
             - if one_news.sended
-              span.badge.badge-success
+              span.badge.badge-success.mr-2
                 | Отправлено
-            |  <a href="
-            = edit_news_path(one_news)
-            | " class="btn btn-sm btn-info">Редактировать новость
+            = link_to 'Редактировать новость', edit_news_path(one_news), :class => 'btn btn-sm btn-info'
             = link_to 'Удалить новость', one_news, :method => :delete, :class => 'btn btn-sm btn-danger ml-2', data: { confirm: "Вы действительно хотите удалить новость «#{one_news.title}»?" }
     = will_paginate(@news, :renderer => 'ApplicationHelper::LinkRenderer')

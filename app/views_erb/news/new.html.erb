@@ -6,7 +6,7 @@
                 <%= render 'edit_one_news_form' %>
             </div>
             <div class="card-footer">
-                <a href="<%= news_index_path %>" class="btn btn-sm btn-light">К списку новостей</a>
+                <%= link_to 'К списку новостей', news_index_path,  :class => 'btn btn-sm btn-light' %>
             </div>
         </div>
     </div>

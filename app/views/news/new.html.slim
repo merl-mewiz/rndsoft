@@ -6,6 +6,4 @@
       .card-body
         = render 'edit_one_news_form'
       .card-footer
-        |  <a href="
-        = news_index_path
-        | " class="btn btn-sm btn-light">К списку новостей
+        = link_to 'К списку новостей', news_index_path,  :class => 'btn btn-sm btn-light'

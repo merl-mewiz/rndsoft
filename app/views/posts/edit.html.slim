@@ -8,10 +8,6 @@
       .card-body
         = render 'edit_post_form'
       .card-footer
-        |  <a href="
-        = post_path(@post)
-        | " class="btn btn-sm btn-light">Просмотреть пост
-        |  <a href="
-        = posts_path
-        | " class="btn btn-sm btn-light">К списку постов
+        = link_to 'Просмотреть пост', post_path(@post),  :class => 'btn btn-sm btn-light'
+        = link_to 'К списку постов', posts_path,  :class => 'btn btn-sm btn-light'
         = link_to 'Удалить пост', @post, :method => :delete, :class => 'btn btn-sm btn-danger float-right', data: { confirm: "Вы действительно хотите удалить пост «#{@post.title}»?" }

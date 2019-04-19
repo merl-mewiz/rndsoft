@@ -4,7 +4,9 @@
         <% @news.each do |one_news| %>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="<%= news_path(one_news) %>"><%= one_news.title %></a></h4>
+                    <h4 class="card-title">
+                        <%= link_to one_news.title, news_path(one_news) %>
+                    </h4>
                     <p class="card-text"><%= one_news.body %></p>
                     <p class="mb-0 small text-secondary">Опубликовано: <%= one_news.created_at.strftime("%d.%m.%Y %H:%M") %></p>
                 </div>
@@ -13,7 +15,7 @@
                         <% if one_news.sended %>
                             <span class="badge badge-success">Отправлено</span>
                         <% end %>
-                        <a href="<%= edit_news_path(one_news) %>" class="btn btn-sm btn-info">Редактировать новость</a>
+                        <%= link_to 'Редактировать новость', edit_news_path(one_news), :class => 'btn btn-sm btn-info' %>
                         <%= link_to 'Удалить новость', one_news, :method => :delete, :class => 'btn btn-sm btn-danger ml-2', data: { confirm: "Вы действительно хотите удалить новость «#{one_news.title}»?" } %>
                     </div>
                 <% end %>
