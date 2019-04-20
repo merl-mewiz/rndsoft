@@ -63,3 +63,4 @@ gem 'will_paginate'
 gem 'paperclip'
 gem 'whenever', require: false
 gem 'slim-rails'
+gem 'rails-controller-testing'
