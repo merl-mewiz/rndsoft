@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    load_and_authorize_resource
+
     def profile
     end
 
@@ -14,6 +16,6 @@ class UsersController < ApplicationController
 
     private
         def user_params
-            params.require(:user).permit(:mail_digest)
+            params.require(:user).permit(:mail_digest, :username)
         end
 end

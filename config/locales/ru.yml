@@ -40,6 +40,9 @@ ru:
       models:
         user:
           attributes:
+            username:
+              blank: "не может быть пустым"
+              taken: "уже занято"
             email:
               blank: "не может быть пустым"
             password:

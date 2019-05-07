@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
-    before_action only: [:new, :edit, :create, :update, :destroy] do
-        check_auth()
-    end
+    load_and_authorize_resource
 
     def index
-        @posts = Post.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+        if params[:myposts] == '1'
+            @posts = Post.where(user_id: current_user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+        else
+            @posts = Post.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+        end
     end
 
     def show
@@ -23,6 +25,7 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
+        @post.user = current_user
         if @post.save
             editForm_params(@post.id)
             flash[:notice] = "Пост «#{@post.title}» успешно создан"

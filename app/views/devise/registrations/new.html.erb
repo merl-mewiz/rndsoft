@@ -11,6 +11,11 @@
         </div>
 
         <div class="form-group">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, autocomplete: "username", :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
             <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> символов минимум)</em>

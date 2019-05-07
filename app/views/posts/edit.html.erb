@@ -3,7 +3,7 @@
         <h2 class="mb-4">Редактирование «<%= @post.title %>»</h2>
         <div class="card">
             <div class="card-body">
-                <%= render 'edit_post_form' %>
+                <%= render 'post_form' %>
             </div>
             <div class="card-footer">
                 <%= link_to 'Просмотреть пост', post_path(@post),  :class => 'btn btn-sm btn-light' %>

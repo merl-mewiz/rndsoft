@@ -3,8 +3,11 @@ ru:
     models:
       post: "Пост"
       news: "Новости"
+      user: "Пользователь"
     attributes:
       post:
         title: "Название"
       news:
         title: "Заголовок"
+      user:
+        username: "Имя пользователя"

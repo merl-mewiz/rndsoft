@@ -4,6 +4,7 @@
         <div class="d-user-profile-data">
             <div class="card">
                 <div class="card-body">
+                    <p><strong>Имя пользователя:</strong> <%= current_user.username %></p>
                     <p><strong>Email:</strong> <%= current_user.email %></p>
                     <p class="mb-0 pb-0">
                         <%= link_to "Изменить данные учетной записи", edit_user_registration_path %>

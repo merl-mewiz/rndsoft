@@ -1,5 +1,5 @@
 <div class="container main-container">
-    <% if current_user && current_user.isadmin %>
+    <% if can? :manage, @post %>
         <div class="flex">
             <div class="card mb-3">
                 <div class="card-body">
@@ -13,7 +13,10 @@
         <div class="card">
             <div class="card-body">
                 <h1 class="mb-1"><%= @post.title %></h1>
-                <p class="mb-4 small text-secondary">Опубликовано: <%= @post.created_at.strftime("%d.%m.%Y %H:%M") %></p>
+                <p class="mb-4 small text-secondary">
+                    <%= @post.user.username %>,
+                    Опубликовано: <%= @post.created_at.strftime("%d.%m.%Y %H:%M") %>
+                </p>
                 <p><%= @post.body %></p>
             </div>
             <div class="card-footer">

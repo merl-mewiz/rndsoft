@@ -1,7 +1,5 @@
 class NewsController < ApplicationController
-    before_action only: [:new, :edit, :create, :update, :destroy] do
-        check_auth()
-    end
+    load_and_authorize_resource
 
     def index
         @news = News.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)

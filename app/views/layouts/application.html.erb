@@ -13,13 +13,13 @@
         <div class="container">
             <%= link_to 'SimpleBlog', root_path, :class=>"navbar-brand"  %>
             <ul class="navbar-nav">
-                <% if current_user && current_user.isadmin %>
+
+                <% if can? :manage, News %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
-                            Управление
+                            Новости
                         </a>
                         <div class="dropdown-menu">
-                            <%= link_to 'Добавить пост', new_post_path, :class=>"dropdown-item"  %>
                             <%= link_to 'Добавить новость', new_news_path, :class=>"dropdown-item"  %>
                             <%= link_to 'Список новостей', news_index_path, :class=>"dropdown-item"  %>
                         </div>
@@ -29,9 +29,11 @@
                 <% if user_signed_in? %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
-                            <%= current_user.email %>
+                            <%= current_user.username %>
                         </a>
                         <div class="dropdown-menu">
+                            <%= link_to_if((can? :write, Post), "Добавить пост", new_post_path, :class=>"dropdown-item") %>
+                            <div class="dropdown-divider"></div>
                             <%= link_to 'Профиль', user_root_path, :class=>"dropdown-item"  %>
                             <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, :class=>"dropdown-item"  %>
                         </div>
