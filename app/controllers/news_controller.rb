@@ -11,13 +11,11 @@ class NewsController < ApplicationController
 
     def new
         @one_news = News.new
-        @digest_default = 2
         editForm_params
     end
 
     def edit
         @one_news = News.find(params[:id])
-        @digest_default = @one_news.mail_digest
         editForm_params(@one_news.id)
     end
 
@@ -62,7 +60,7 @@ class NewsController < ApplicationController
 
     private
         def news_params
-            params.require(:one_news).permit(:title, :mail_digest, :body)
+            params.require(:one_news).permit(:title, :body)
         end
 
         def editForm_params(id = nil)

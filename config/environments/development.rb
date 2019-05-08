@@ -76,4 +76,5 @@ Rails.application.configure do
     html_tag.html_safe
   end
 
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end

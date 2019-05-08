@@ -4,9 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @one_news.title %></h1>
-    <p>
-      <%= @one_news.body %>
-    </p>
+    <h1><%= @mail_subject %></h1>
+    <%= @digest.html_safe %>
   </body>
 </html>

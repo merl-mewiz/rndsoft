@@ -113,4 +113,5 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   config.secret_key_base = '525828b7669917b48425cd1711b51a1138f426d3b4cc5f51a0b94bd8f20dc1b9e817ec9a249cb2ef380c89162e5940bd68b08f94cfff7fafac698bbbad1f178c'
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end

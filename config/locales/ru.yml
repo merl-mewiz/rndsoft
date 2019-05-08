@@ -35,6 +35,10 @@ ru:
     next_label: "Вперед &#8250;"
     page_gap: "&hellip;"
 
+  unauthorized:
+    manage:
+      all: "Недостаточно прав для этого действия"
+
   activerecord:
     errors:
       models:

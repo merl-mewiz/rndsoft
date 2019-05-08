@@ -35,6 +35,7 @@ class Ability
     if user.has_role?(:author)
         can :read, :all
         can :manage, Post, user_id: user.id
+        can :manage, User, id: user.id
     elsif user.has_role?(:admin)
         can :manage, :all
     else
