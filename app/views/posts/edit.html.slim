@@ -1,0 +1,13 @@
+.container.main-container
+  .flex-row
+    h2.mb-4
+      | Редактирование «
+      = @post.title
+      | »
+    .card
+      .card-body
+        = render 'post_form'
+      .card-footer
+        = link_to 'Просмотреть пост', post_path(@post),  :class => 'btn btn-sm btn-light'
+        = link_to 'К списку постов', posts_path,  :class => 'btn btn-sm btn-light'
+        = link_to 'Удалить пост', @post, :method => :delete, :class => 'btn btn-sm btn-danger float-right', data: { confirm: "Вы действительно хотите удалить пост «#{@post.title}»?" }

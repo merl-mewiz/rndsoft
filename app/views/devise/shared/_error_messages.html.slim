@@ -1,0 +1,9 @@
+- if resource.errors.any?
+  .container
+    .alert.alert-danger.alert-dismissible
+      button.close[type="button" data-dismiss="alert"]
+        | ×
+      ul.d-err-list
+        - resource.errors.full_messages.each do |message|
+          li
+            = message

@@ -1,0 +1,20 @@
+.container.main-container
+  - if can? :manage, @post
+    .flex
+      .card.mb-3
+        .card-body
+          = link_to 'Редактировать пост', edit_post_path(@post), :class => 'btn btn-sm btn-info ml-2'
+          = link_to 'Удалить пост', @post, :method => :delete, :class => 'btn btn-sm btn-danger ml-2', data: { confirm: "Вы действительно хотите удалить пост «#{@post.title}»?" }
+  .flex-row
+    .card
+      .card-body
+        h1.mb-1
+          = @post.title
+        p.mb-4.small.text-secondary
+          = @post.user.username
+          | , Опубликовано: 
+          = @post.created_at.strftime("%d.%m.%Y %H:%M")
+        p
+          = @post.body
+      .card-footer
+        = link_to 'К списку постов', posts_path,  :class => 'btn btn-sm btn-light'

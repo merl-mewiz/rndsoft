@@ -1,0 +1,14 @@
+p
+  | Здравствуйте, 
+  = @email
+  | !
+- if @resource.try(:unconfirmed_email?)
+  p
+    | Ваш email будет сменен на 
+    = @resource.unconfirmed_email
+    | .
+- else
+  p
+    | Ваш email был сменен на 
+    = @resource.email
+    | .
