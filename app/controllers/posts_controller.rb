@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     load_and_authorize_resource
 
     def index
-        if params[:myposts] == '1'
+        if params[:myposts].to_i == 1
             @posts = Post.where(user_id: current_user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
         else
             @posts = Post.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
@@ -28,8 +28,7 @@ class PostsController < ApplicationController
         @post.user = current_user
         if @post.save
             editForm_params(@post.id)
-            flash[:notice] = "Пост «#{@post.title}» успешно создан"
-            redirect_to edit_post_path(@post)
+            redirect_to edit_post_path(@post), :notice => 'Пост успешно создан'
         else
             editForm_params
             flash.now[:alert] = blogShowErrors(@post)
@@ -41,8 +40,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         if @post.update(post_params)
             editForm_params(@post.id)
-            flash[:notice] = "Пост «#{@post.title}» успешно обновлен"
-            redirect_to edit_post_path(@post)
+            redirect_to edit_post_path(@post), :notice => 'Пост успешно обновлен'
         else
             editForm_params(@post.id)
             flash.now[:alert] = blogShowErrors(@post)
@@ -54,8 +52,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         deltitle = @post.title
         if @post.destroy
-            flash[:notice] = "Пост «#{deltitle}» успешно удален"
-            redirect_to posts_path
+            redirect_to posts_path, :notice => 'Пост успешно удален'
         else
             editForm_params(@post.id)
             flash.now[:alert] = blogShowErrors(@post)

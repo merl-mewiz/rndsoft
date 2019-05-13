@@ -23,8 +23,7 @@ class NewsController < ApplicationController
         @one_news = News.new(news_params)
         if @one_news.save
             editForm_params(@one_news.id)
-            flash[:notice] = "Новость «#{@one_news.title}» успешно создана"
-            redirect_to edit_news_path(@one_news)
+            redirect_to edit_news_path(@one_news), :notice => 'Новость успешно создана'
         else
             editForm_params
             flash.now[:alert] = blogShowErrors(@one_news)
@@ -36,8 +35,7 @@ class NewsController < ApplicationController
         @one_news = News.find(params[:id])
         if @one_news.update(news_params)
             editForm_params(@one_news.id)
-            flash[:notice] = "Новость «#{@one_news.title}» успешно обновлена"
-            redirect_to edit_news_path(@one_news)
+            redirect_to edit_news_path(@one_news), :notice => 'Новость успешно обновлена'
         else
             editForm_params(@one_news.id)
             flash.now[:alert] = blogShowErrors(@one_news)
@@ -49,8 +47,7 @@ class NewsController < ApplicationController
         @one_news = News.find(params[:id])
         deltitle = @one_news.title
         if @one_news.destroy
-            flash[:notice] = "Новость «#{deltitle}» успешно удалена"
-            redirect_to news_index_path
+            redirect_to news_index_path, :notice => 'Новость успешно удалена'
         else
             editForm_params(@one_news.id)
             flash.now[:alert] = blogShowErrors(@one_news)
